@@ -5,11 +5,10 @@
 // 4. If timer runs out before user is finished, hide the questions and timeout and display the gameResults div to show correct answers, incorrect answers, and unanswered questions
 // 5. If user finishes game before time runs out, they can press the DONE button and we will display the gameResults div
 
-var timerSeconds = 10;
+var timerSeconds = 120;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var unanswered = 0;
-var totalQuestions = 4;
+var unanswered = 4;
 
 $(document).ready(function () {
     console.log("Ready!");
@@ -19,6 +18,7 @@ $(document).ready(function () {
     hideGameResults();
     hideDoneButton();
     hideTimer();
+    hideRetryButton()
 
     //This is starting and stopping the timer. Start timer by pressing the START GAME button. Stop game when timer runs out OR by pressing the DONE button.
     var timer;
@@ -26,6 +26,8 @@ $(document).ready(function () {
     $("#start-game").on("click", run);
 
     $("#done-game").on("click", stop);
+
+    $("#retry-game").on("click", restart);
 
     function run() {
         timer = setInterval(decrement, 1000);
@@ -45,16 +47,25 @@ $(document).ready(function () {
 
     function stop() {
         clearInterval(timer);
-        timerSeconds = 10;
+        timerSeconds = 120;
         $("#timeLeft").html(timerSeconds);
         hideTimer();
         hideTriviaQuestions();
         hideDoneButton();
         showGameResults();
+        showRetryButton();
+        hideStartButton();
     }
 
-    function resetTriviaQuestions() {
-        document.getElementById("#trivia-Questions").reset();
+    function restart() {
+        timer = setInterval(decrement, 1000);
+        resetQuestions();
+        resetGameResults();
+        showTimer();
+        showTriviaQuestions();
+        showDoneButton();
+        hideGameResults();
+        hideRetryButton();
     }
 
     function showTriviaQuestions() {
@@ -70,7 +81,7 @@ $(document).ready(function () {
     }
 
     function showDoneButton() {
-        $("#done-game").show();
+        $("#done").show();
     }
 
     function hideTriviaQuestions() {
@@ -82,30 +93,37 @@ $(document).ready(function () {
     }
 
     function hideDoneButton() {
-        $("#done-game").hide();
+        $("#done").hide();
+    }
+
+    function hideRetryButton() {
+        $("#retry").hide();
+    }
+
+    function showRetryButton() {
+        $("#retry").show();
+    }
+
+    function hideStartButton() {
+        $("#start").hide();
     }
 
     function hideTimer() {
         $("#timer").hide();
     }
 
-    // function unansweredQuestionsTotal () {
-    //     totalQuestions - (correctAnswers + incorrectAnswers) = []
-    // }
+    function resetQuestions() {
+        document.getElementsByClassName("formFields")[0].reset();
+        document.getElementsByClassName("formFields")[1].reset();
+        document.getElementsByClassName("formFields")[2].reset();
+        document.getElementsByClassName("formFields")[3].reset();
+    }
 
-    //Now we want to capture correct answers, incorrect inputs and unanswered questions
-    // $(function () {
-
-    //     $('.questions input[type="radio"]').click(function () {
-
-    //         var type = $(this).data('type'),
-    //             correctAnswerCount =
-    //             $('.questions input[type="radio"]:checked[data-type="1"]').length;
-
-    //         alert(type === 1 ? 'Correct' : 'Wrong');
-    //     });
-
-    // });
+    function resetGameResults() {
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        unanswered = 4;
+    }
 
     //Now we want to capture correct answers, incorrect inputs and unanswered questions
     $(function () {
@@ -118,14 +136,14 @@ $(document).ready(function () {
 
             if (type === 1) {
                 correctAnswers++;
+                unanswered = unanswered - 1;
                 $("#correctAnswers").html(correctAnswers);
+                $("#unansweredQuestions").html(unanswered);
             } else if (type === 0) {
                 incorrectAnswers++;
+                unanswered = unanswered - 1;
                 $("#incorrectAnswers").html(incorrectAnswers);
-            } else {
-                unanswered++;
                 $("#unansweredQuestions").html(unanswered);
-                console.log("Fired!");
             }
         });
 

@@ -40,58 +40,73 @@
 
         <div id="timer">
             <h3>Timer:
-                <span id="timeLeft">10</span>
+                <span id="timeLeft">120</span>
             </h3>
         </div>
-
 
         <div id="trivia-Questions">
             <div class="questions">
                 <p>Question 1</p>
-
-                <form>
+                <br>
+                <form class="formFields">
                     Which Wes Anderson movie came first?
+                    <br>
                     <br>
                     <input type="radio" name="question1" value="bottle-rocket" data-type="0">Bottle Rocket
                     <input type="radio" name="question1" value="rushmore" data-type="1">Rushmore
                     <input type="radio" name="question1" value="the-royal-tenenbaums" data-type="0">The Royal Tenenbaums
                 </form>
+                <img src="assets/images/bottle-rocket-poster.jpg" alt="Bottle Rocket">
+                <img src="assets/images/rushmore-poster.jpg" alt="Rushmore">
+                <img src="assets/images/royal-tenenbaums-poster.jpg" alt="The Royal Tenenbaums">
             </div>
 
             <div class="questions">
                 <p>Question 2</p>
-
-                <form>
+                <br>
+                <form class="formFields">
                     Which actor has starred in more Anderson movies?
+                    <br>
                     <br>
                     <input type="radio" name="question2" value="bill-murray" data-type="1">Bill Murray
                     <input type="radio" name="question2" value="luke-wilson" data-type="0">Luke Wilson
                     <input type="radio" name="question2" value="owen-wilson" data-type="0">Owen Wilson
                 </form>
+                <img src="assets/images/bill-murray.jpg" alt="Bill Murray">
+                <img src="assets/images/luke-wilson.jpg" alt="Luke Wilson">
+                <img src="assets/images/owen-wilson.jpg" alt="Owen Wilson">
             </div>
 
             <div class="questions">
                 <p>Question 3</p>
-
-                <form>
-                    Characters in "Fantastic Mr. Fox" use this word in lieu of swearing...
+                <br>
+                <form class="formFields">
+                    Characters in Fantastic Mr. Fox use this word in lieu of swearing...
+                    <br>
                     <br>
                     <input type="radio" name="question3" value="curse" data-type="0">Curse
                     <input type="radio" name="question3" value="cuss" data-type="1">Cuss
                     <input type="radio" name="question3" value="dang" data-type="0">Dang
                 </form>
+                <img src="assets/images/fox-2.jpg" alt="Picture 1">
+                <img src="assets/images/fox-1.jpg" alt="Picture 2">
+                <img src="assets/images/fox-3.jpg" alt="Picture 3">
             </div>
 
             <div class="questions">
                 <p>Question 4</p>
-
-                <form>
+                <br>
+                <form class="formFields">
                     Which movie earned Anderson his first Oscar nomination for Best Director?
+                    <br>
                     <br>
                     <input type="radio" name="question4" value="moonrise-kingdom" data-type="0">Moonrise Kingdom
                     <input type="radio" name="question4" value="the-grand-budapest-hotel" data-type="1">The Grand Budapest Hotel
                     <input type="radio" name="question4" value="the-royal-tenenbaums" data-type="0">The Royal Tenenbaums
                 </form>
+                <img src="assets/images/moonrise-kingdom-poster.jpg" alt="Moonrise Kingdom">
+                <img src="assets/images/grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel">
+                <img src="assets/images/royal-tenenbaums-poster.jpg" alt="The Royal Tenenbaums">
             </div>
         </div>
 
@@ -100,9 +115,9 @@
         </div>
 
         <div id="game-Results">
-            <p>
+            <h2>
                 All Done!
-            </p>
+            </h2>
             <br>
             <p>
                 Correct Answers:
@@ -120,8 +135,9 @@
             </p>
         </div>
 
-
-
+        <div id="retry">
+            <button id="retry-game" style="cursor:pointer">RETRY GAME</button>
+        </div>
 
     </div>
 </body>
